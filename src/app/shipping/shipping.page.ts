@@ -30,6 +30,8 @@ export class ShippingPage implements OnInit {
   public shipping!: string;
   private activatedRoute = inject(ActivatedRoute);
   data: CardData[] = [];
+  filteredData: CardData[] = [];
+  searchTerm: string = '';
   constructor(private dataService: MyDataService) {}
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class ShippingPage implements OnInit {
     this.dataService.getData().subscribe(
       (results: CardData[]) => {
         this.data = results;
+        this.filteredData = results; 
         console.log(this.data);
         
       },
@@ -45,6 +48,24 @@ export class ShippingPage implements OnInit {
       }
     );
   
+  }
+
+  filterData() {
+    if (!this.searchTerm) {
+      this.filteredData = this.data;
+      return;
+    }
+
+    this.filteredData = this.data.filter(card => 
+      card.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      card.content.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      card.color.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      card.elements.some(element => 
+        element.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        element.content.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        element.color.toLowerCase().includes(this.searchTerm.toLowerCase())
+      )
+    );
   }
 
 }
