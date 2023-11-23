@@ -1,5 +1,5 @@
 ion-menu-button {
-  color: var(--ion-color-primary);
+  // color: var(--ion-color-primary);
 }
 
 #container {
@@ -26,3 +26,10 @@ ion-menu-button {
 #container a {
   text-decoration: none;
 }
+
+ion-card {
+  border-radius:10px !important;
+  
+}
+
+

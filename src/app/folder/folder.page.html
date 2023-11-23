@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -14,8 +14,100 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div >
+   
+    <ion-grid>
+
+      <ion-searchbar color="light" placeholder="Secondary"></ion-searchbar>
+      <ion-row>
+        <ion-col>
+          <ion-card  color="primary">
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+          
+            <ion-card-content> Card Content </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card color="primary">
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+          
+            <ion-card-content> Card Content </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card color="primary">
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+          
+            <ion-card-content> Card Content </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card color="primary">
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+          
+            <ion-card-content> Card Content </ion-card-content>
+          </ion-card>
+        </ion-col>
+     
+        
+      </ion-row>
+
+      <ion-row  *ngFor="let i of [1, 2, 3, 4,5,6,7,8]">
+       
+        <ion-col>
+          <ion-card color="secondary">
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+          
+            <ion-card-content> Card Content </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card color="secondary">
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+          
+            <ion-card-content> Card Content </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card color="secondary">
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+          
+            <ion-card-content> Card Content </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card color="secondary">
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+          
+            <ion-card-content> Card Content </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
   </div>
 </ion-content>
