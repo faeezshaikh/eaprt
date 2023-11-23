@@ -13,4 +13,38 @@
       <ion-title size="large">shipping</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div>
+
+    <ion-grid>
+      <ion-searchbar color="light" placeholder="Secondary"></ion-searchbar>
+      
+      <ion-row >
+        <ion-col *ngFor="let item of data">
+          <ion-card  color="primary">
+            <ion-card-header>
+              <ion-card-title>{{ item.title }}</ion-card-title>
+              <ion-card-subtitle>{{ item.type }}</ion-card-subtitle>
+            </ion-card-header>
+          
+            <ion-card-content> {{ item.content }} </ion-card-content>
+          </ion-card>
+
+          <ion-grid>
+            <ion-row *ngFor="let child of item?.elements">
+              <ion-card  color="secondary">
+                <ion-card-header>
+                  <ion-card-title>{{ child.title }}</ion-card-title>
+                  <ion-card-subtitle>{{ child.type }}</ion-card-subtitle>
+                </ion-card-header>
+              
+                <ion-card-content> {{ child.content }} </ion-card-content>
+              </ion-card>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+       
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

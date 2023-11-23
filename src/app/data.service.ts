@@ -1,9 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class MyDataService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+  getData(): Observable<any> {
+    console.log('Fetching data...');
+    return this.http.get('/assets/data.json');
+  }
 }
