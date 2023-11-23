@@ -1,8 +1,8 @@
 {
   "name": "eaapp",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Faeez Shaikh",
+  "homepage": "www.github.com/faeezshaikh",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
