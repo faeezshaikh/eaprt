@@ -1,6 +1,8 @@
 import { Component,inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MyDataService } from '../data.service';
+import { CardDetailsPage } from '../card-details/card-details.page';
+import { ModalController } from '@ionic/angular';
 
 
 interface CardData {
@@ -32,7 +34,8 @@ export class ShippingPage implements OnInit {
   data: CardData[] = [];
   filteredData: CardData[] = [];
   searchTerm: string = '';
-  constructor(private dataService: MyDataService) {}
+  message = 'This modal example uses the modalController to present and dismiss modals.';
+  constructor(private dataService: MyDataService,private modalCtrl: ModalController) {}
 
   ngOnInit() {
     this.shipping = this.activatedRoute.snapshot.paramMap.get('id') as string;
@@ -66,6 +69,19 @@ export class ShippingPage implements OnInit {
         element.color.toLowerCase().includes(this.searchTerm.toLowerCase())
       )
     );
+  }
+
+  async openModal() {
+    const modal = await this.modalCtrl.create({
+      component: CardDetailsPage,
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+      this.message = `Hello, ${data}!`;
+    }
   }
 
 }
