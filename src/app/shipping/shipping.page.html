@@ -28,40 +28,40 @@
             <ion-card-header>
               <!-- <fa-icon icon="home"></fa-icon> -->
               <fa-icon [icon]="['fas', 'scale-balanced']" size="2x"></fa-icon>
-              <ion-card-title>{{ item.title }}</ion-card-title>
+              <ion-card-title>{{ item.Name }}</ion-card-title>
               <!-- <ion-card-subtitle>{{ item.type }}</ion-card-subtitle> -->
             </ion-card-header>
           
-            <ion-card-content> {{ item.content }} </ion-card-content>
+            <!-- <ion-card-content> {{ item.content }} </ion-card-content> -->
           </ion-card>
 
           <ion-grid>
-            <ion-row *ngFor="let child of item?.elements">
-              <ion-card  *ngIf= "child.type !== 'outline' " color="warning">
+            <ion-row *ngFor="let child of item?.Children">
+              <ion-card  *ngIf= "child.Attributes[0].AttributeValue !== 'Published' " color="warning">
                 <ion-card-header>
-                  <ion-card-title>{{ child.title }}</ion-card-title>
-                  <!-- <ion-card-subtitle>{{ child.type }}</ion-card-subtitle> -->
+                  <ion-card-title>{{ child.Name }}</ion-card-title>
+
                 </ion-card-header>
               
-                <ion-card-content> {{ child.content }} </ion-card-content>
+                <ion-card-content> {{ child.Description }} </ion-card-content>
               </ion-card>
 
-              <ion-card  *ngIf= "child.type === 'outline' " >
+              <ion-card  *ngIf= "child.Attributes[0].AttributeValue === 'Published' " >
                 <ion-card-header>
                   <ion-row>
                     <ion-col>
                       <ion-icon name="logo-ionic" size="large" color="primary"></ion-icon>
                     </ion-col>
                     <ion-col>
-                      <ion-card-title>{{ child.title }}</ion-card-title>
+                      <ion-card-title>{{ child.Name }}</ion-card-title>
 
                     </ion-col>
                     <ion-col>&nbsp;</ion-col>
                   </ion-row>
-                  <!-- <ion-card-subtitle>{{ child.type }}</ion-card-subtitle> -->
+
                 </ion-card-header>
               
-                <ion-card-content> {{ child.content }} </ion-card-content>
+                <ion-card-content> {{ child.Description }} </ion-card-content>
               </ion-card>
 
 

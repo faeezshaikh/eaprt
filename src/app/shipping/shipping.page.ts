@@ -22,6 +22,74 @@ interface ElementData {
   color: string;
 }
 
+///
+
+
+interface IrisData {
+  config: {};
+  Capabilities: Capability[];
+ }
+
+ interface Capability {
+    Type: string;
+    Name: string;
+    InternalId: string;
+    CreatedBy: string;
+    CreatedTimestamp: string;
+    ModifiedBy: string;
+    ModifiedTimestamp: string;
+    ProtectfromDelete: boolean;
+    Filtered: boolean;
+    Children: Level1sChild[]
+ }
+
+ interface Level1sChild {
+    Type: string;
+    Name: string;
+    Description: string;
+    InternalId: string;
+    CreatedBy: string;
+    CreatedTimestamp: string;
+    ModifiedBy: string;
+    ModifiedTimestamp: string;
+    ProtectfromDelete: boolean;
+    Filtered: boolean;
+    Attributes: Attrib[],
+    Children: Level2sChild[]
+    Comments: Comment[]
+ }
+
+ interface Attrib {
+  AttributeName: string;
+  AttributeValue: string;
+
+ }
+
+ interface Comment {
+  CommentingUser: string;
+  Comment: string;
+  CommentDate: string;
+  CommentArchived: boolean
+ }
+
+ interface Level2sChild {
+  Type: string;
+  Name: string;
+  Description: string;
+  InternalId: string;
+  CreatedBy: string;
+  CreatedTimestamp: string;
+  ModifiedBy: string;
+  ModifiedTimestamp: string;
+  Filtered: boolean;
+  CapEnablesStageRelationship: any[],
+  Attributes: Attrib[],
+  Children: Level2sChild[]
+  Comments: Comment[]
+
+ }
+///
+
 @Component({
   selector: 'app-shipping',
   templateUrl: './shipping.page.html',
@@ -31,8 +99,9 @@ export class ShippingPage implements OnInit {
 
   public shipping!: string;
   private activatedRoute = inject(ActivatedRoute);
-  data: CardData[] = [];
-  filteredData: CardData[] = [];
+
+  data: Capability[] = [];
+  filteredData: Capability[] = [];
   searchTerm: string = '';
   message = 'This modal example uses the modalController to present and dismiss modals.';
   constructor(private dataService: MyDataService,private modalCtrl: ModalController) {}
@@ -40,10 +109,10 @@ export class ShippingPage implements OnInit {
   ngOnInit() {
     this.shipping = this.activatedRoute.snapshot.paramMap.get('id') as string;
     this.dataService.getData().subscribe(
-      (results: CardData[]) => {
+      (results: Capability[]) => {
         this.data = results;
-        this.filteredData = results; 
-        console.log(this.data);
+        this.filteredData= results; 
+        console.log('Caps' + this.data);
         
       },
       (error) => {
@@ -59,16 +128,16 @@ export class ShippingPage implements OnInit {
       return;
     }
 
-    this.filteredData = this.data.filter(card => 
-      card.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      card.content.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      card.color.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      card.elements.some(element => 
-        element.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        element.content.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        element.color.toLowerCase().includes(this.searchTerm.toLowerCase())
-      )
-    );
+    // this.filteredData = this.data.filter(card => 
+    //   card.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+    //   card.content.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+    //   card.color.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+    //   card.elements.some(element => 
+    //     element.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+    //     element.content.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+    //     element.color.toLowerCase().includes(this.searchTerm.toLowerCase())
+    //   )
+    // );
   }
 
   async openModal() {
