@@ -129,15 +129,23 @@ export class ShippingPage implements OnInit {
     }
 
     // this.filteredData = this.data.filter(card => 
-    //   card.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-    //   card.content.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-    //   card.color.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-    //   card.elements.some(element => 
-    //     element.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-    //     element.content.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-    //     element.color.toLowerCase().includes(this.searchTerm.toLowerCase())
+    //   card.Name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+    //   card.Type.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+    //   card.InternalId.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+    //   card.Children.some(child => 
+    //     child.Name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+    //     child.Type.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+    //     child.Description.toLowerCase().includes(this.searchTerm.toLowerCase())
     //   )
     // );
+
+ 
+    this.filteredData = this.data.filter(card => 
+      card.Name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+      card.Children.some(child => 
+        child.Name.toLowerCase().includes(this.searchTerm.toLowerCase()))
+      )
+    ;
   }
 
   async openModal() {
