@@ -5,27 +5,26 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private isAuthenticated = new BehaviorSubject<boolean>(false);
+  private isAuthenticated = false;
 
+  private readonly validUsername = 'admin';
+  private readonly validPassword = 'password';
   constructor() { }
 
   login(username: string, password: string): boolean {
-    // Implement your login logic here
-    // For example, make an HTTP request to your backend to verify credentials
-
-    // On successful login:
-    this.isAuthenticated.next(true);
-    return true;
-
-    // On failure:
-    // return false;
+    if (username === this.validUsername && password === this.validPassword) {
+      this.isAuthenticated = true;
+      return true;
+    }
+    return false;
   }
 
   logout() {
-    this.isAuthenticated.next(false);
+    this.isAuthenticated = false;
+    return this.isAuthenticated;
   }
 
-  get isLoggedIn() {
-    return this.isAuthenticated.asObservable();
+  getisLoggedIn() {
+    return this.isAuthenticated;
   }
 }

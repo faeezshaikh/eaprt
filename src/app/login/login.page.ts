@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
+  loginError = false;
   username: string = '';
   password: string = '';
   constructor(private authService: AuthService, private router: Router) { }
@@ -17,6 +18,7 @@ export class LoginPage {
       this.router.navigate(['/capabilities']);
     } else {
       // Handle login failure (e.g., show an error message)
+      this.loginError = true;
     }
   }
 }
