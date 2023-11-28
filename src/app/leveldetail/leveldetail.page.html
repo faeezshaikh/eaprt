@@ -1,14 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="{{ type === 'Tier' ? 'secondary' : 'warning'}}">
     <ion-buttons slot="start">
-      <ion-buttons slot="start">
+   
 
         <ion-back-button defaultHref="/"></ion-back-button>
-      </ion-buttons>
+   
 
     </ion-buttons>
 
-    <ion-title slot="secondary">{{ type === 'Tier' ? 'L2' : 'L3'}} - {{ name }}</ion-title>
+    <ion-title style="color:purple"  slot="start">{{ type === 'Tier' ? 'L2' : 'L3'}} - {{ name }}</ion-title>
 
   </ion-toolbar>
   
@@ -16,7 +16,7 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-card>
+  <ion-card color="medium">
     <ion-card-header>
       <ion-card-title>{{parentName}} <span *ngIf="parentName"> --> </span> {{item.Name}}</ion-card-title>
       <ion-card-subtitle>Type: {{item.Type}}</ion-card-subtitle>
@@ -41,7 +41,7 @@
 
 <ion-grid>
   <ion-row>
-    <ion-card *ngFor="let child of children " >
+    <ion-card *ngFor="let child of children " tooltip="I'm a tooltip below a button"  >
       <ion-card-header color="{{ type === 'Tier' ? 'warning' : 'secondary'}}">
         <ion-card-title style="color:white">{{child.Name}}</ion-card-title>
 
@@ -51,8 +51,12 @@
         <ion-list>
           <ion-item *ngFor="let subchild of child.Children ">
      
+            <!-- <ion-icon color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" name="logo-ionic"></ion-icon> &nbsp;
+            <ion-label color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" >{{subchild.Name}}</ion-label> -->
             <ion-icon color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" name="logo-ionic"></ion-icon> &nbsp;
-            <ion-label color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" >{{subchild.Name}}</ion-label>
+            <ion-label >{{subchild.Name}}</ion-label>
+         
+          
           </ion-item>
     
          
