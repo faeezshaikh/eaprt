@@ -10,7 +10,7 @@ export class MyDataService {
 
   constructor(private http: HttpClient) { }
   getData(): Observable<any> {
-    console.log('Fetching data...');
+    // console.log('Fetching data...');
     // return this.http.get('/assets/data.json');
     return this.http.get('/assets/iris.json');
   }

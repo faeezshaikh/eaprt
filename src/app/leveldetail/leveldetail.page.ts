@@ -21,7 +21,7 @@ export class LeveldetailPage implements OnInit {
     const navigation = this.router.getCurrentNavigation();
     const item = navigation?.extras.state?.['data'];
     const parentName = navigation?.extras.state?.['parentName'];
-    console.log("Accepted item", item);
+    // console.log("Accepted item", item);
     this.name = item.Name;
     this.item = item;
     this.children = item.Children;
@@ -30,4 +30,18 @@ export class LeveldetailPage implements OnInit {
     
   }
 
+  getColor(attributeValue: any): string {
+    switch (attributeValue) {
+      case 'Published':
+        return 'success';
+      case 'Approved':
+        return 'secondary';
+      case 'In Progress':
+        return 'danger';
+      // Add more cases as needed
+      default:
+        return 'medium'; // Default color if none of the conditions are met
+    }
+  }
+  
 }

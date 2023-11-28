@@ -51,11 +51,15 @@
         <ion-list>
           <ion-item *ngFor="let subchild of child.Children ">
      
-            <!-- <ion-icon color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" name="logo-ionic"></ion-icon> &nbsp;
-            <ion-label color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" >{{subchild.Name}}</ion-label> -->
+        
             <ion-icon color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" name="logo-ionic"></ion-icon> &nbsp;
-            <ion-label >{{subchild.Name}}</ion-label>
-         
+            <ion-label >{{subchild.Name}}</ion-label> &nbsp;&nbsp;
+
+            <!-- <ion-badge color="success">{{subchild.Attributes[0].AttributeValue}}</ion-badge> -->
+
+            <ion-badge *ngIf="subchild?.Attributes?.[0]?.AttributeValue"  [color]="getColor(subchild.Attributes[0].AttributeValue)">
+              {{ subchild.Attributes[0].AttributeValue }}
+            </ion-badge>
           
           </ion-item>
     
