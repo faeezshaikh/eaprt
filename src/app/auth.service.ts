@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -7,10 +8,10 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   private isAuthenticated = false;
 
-  private readonly validUsername = 'admin';
-  private readonly validPassword = 'password';
+  private readonly validUsername = '484007';
+  private readonly validPassword = 'sduQvuLI';
   private readonly storageKey = '_athu';
-  constructor() {
+  constructor(private router: Router) {
     this.checkAuthentication();
    }
 
@@ -36,6 +37,8 @@ export class AuthService {
   logout() {
     this.isAuthenticated = false;
     localStorage.removeItem(this.storageKey);
+    // this.router.navigate(['/login'], { reload: true });
+    this.router.navigateByUrl('/login');
     return this.isAuthenticated;
   }
 

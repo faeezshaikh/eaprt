@@ -45,7 +45,13 @@
       <ion-card-header color="{{ type === 'Tier' ? 'warning' : 'secondary'}}">
         <ion-card-title style="color:white">{{child.Name}}</ion-card-title>
 
-      <ion-card-subtitle style="color:white">  {{ (child.Description.length>60)? (child.Description | slice:0:60)+'...':(child.Description) }}</ion-card-subtitle>
+  
+     
+<div class="tooltip">
+  <ion-card-subtitle  style="color:white">  {{ (child.Description.length>60)? (child.Description | slice:0:60)+'...':(child.Description) }}</ion-card-subtitle>
+    
+  <span class="tooltiptext">{{child.Description}}</span>
+</div>
       </ion-card-header>
       <ion-card-content>
         <ion-list>
