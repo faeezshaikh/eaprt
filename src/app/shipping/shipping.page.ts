@@ -46,7 +46,8 @@ export class ShippingPage implements OnInit {
   constructor(private dataService: MyDataService,private modalCtrl: ModalController,private route: Router) {}
 
   ngOnInit() {
-    this.shipping = this.activatedRoute.snapshot.paramMap.get('id') as string;
+    // this.shipping = this.activatedRoute.snapshot.paramMap.get('id') as string;
+    this.shipping = this.activatedRoute.snapshot.component?.name as string;
     this.dataService.getData().subscribe(
       (results: Capability[]) => {
         this.data = results;

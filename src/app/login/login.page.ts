@@ -14,7 +14,7 @@ export class LoginPage {
 
   login() {
     if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/shipping/blah']);
+      this.router.navigate(['/capabilities']);
     } else {
       // Handle login failure (e.g., show an error message)
     }

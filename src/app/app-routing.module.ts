@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   },
   {
-    path: 'shipping/:id',
+    path: 'capabilities',
     canActivate: [AuthGuard],
     loadChildren: () => import('./shipping/shipping.module').then( m => m.ShippingPageModule)
   },
