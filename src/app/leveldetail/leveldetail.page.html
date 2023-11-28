@@ -23,26 +23,36 @@
     </ion-card-header>
   
     <ion-card-content>
-      {{item.InternalId}}
+      <ion-row>
+        <ion-col size="6">
+          <ion-label> Internal Id: </ion-label>{{item.InternalId}} 
+        </ion-col>
+        <ion-col size="6"><ion-badge color="warning">{{item.ProtectfromDelete ? 'Protected' : 'Deletable'}}</ion-badge></ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">Created By: {{item.CreatedBy}} <br/></ion-col>
+        <ion-col size="6">Modified By: {{item.ModifiedBy}}</ion-col>
+      </ion-row>
+     
+      
+      
     </ion-card-content>
   </ion-card>
 
 <ion-grid>
   <ion-row>
-    <ion-card *ngFor="let child of children ">
-      <ion-card-header>
-        <ion-card-title>{{child.Name}}</ion-card-title>
+    <ion-card *ngFor="let child of children " >
+      <ion-card-header color="{{ type === 'Tier' ? 'warning' : 'secondary'}}">
+        <ion-card-title style="color:white">{{child.Name}}</ion-card-title>
 
-      <ion-card-subtitle>  {{ (child.Description.length>60)? (child.Description | slice:0:60)+'...':(child.Description) }}</ion-card-subtitle>
+      <ion-card-subtitle style="color:white">  {{ (child.Description.length>60)? (child.Description | slice:0:60)+'...':(child.Description) }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <ion-list>
           <ion-item *ngFor="let subchild of child.Children ">
-            <!-- <ion-thumbnail slot="start">
-              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-            </ion-thumbnail> -->
-            <ion-icon name="logo-ionic"></ion-icon> &nbsp;
-            <ion-label>{{subchild.Name}}</ion-label>
+     
+            <ion-icon color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" name="logo-ionic"></ion-icon> &nbsp;
+            <ion-label color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" >{{subchild.Name}}</ion-label>
           </ion-item>
     
          
