@@ -33,7 +33,7 @@
           <ion-grid>
             <ion-row *ngFor="let child of item?.Children">
               <ion-card  class="ion-text-center" style="width: 100% !important;"
-                 (click)="navigateToPage2(child)"  color="warning">
+                 (click)="navigateToPage2(child,item.Name)"  color="warning">
                 <ion-card-header>
                   <ion-card-title>{{ child.Name }}</ion-card-title>
 

@@ -96,9 +96,9 @@ export class ShippingPage implements OnInit {
     });
   }
 
-  navigateToPage2(item: Level1sChild) {
+  navigateToPage2(item: Level1sChild,parentName: string) {
     this.route.navigate(['/leveldetail'], {
-      state: { data: item }
+      state: { data: item, parentName: parentName }
     });
   }
   async openModal() {
