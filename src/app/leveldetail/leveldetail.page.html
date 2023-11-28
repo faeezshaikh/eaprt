@@ -16,9 +16,41 @@
 
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">leveldetail</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Card Title</ion-card-title>
+      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content>
+  </ion-card>
+
+<ion-grid>
+  <ion-row>
+    <ion-card *ngFor="let child of children ">
+      <ion-card-header>
+        <ion-card-title>{{child.Name}}</ion-card-title>
+
+      <ion-card-subtitle>  {{ (child.Description.length>60)? (child.Description | slice:0:60)+'...':(child.Description) }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let subchild of child.Children ">
+            <!-- <ion-thumbnail slot="start">
+              <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+            </ion-thumbnail> -->
+            <ion-icon name="logo-ionic"></ion-icon> &nbsp;
+            <ion-label>{{subchild.Name}}</ion-label>
+          </ion-item>
+    
+         
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-row>
+</ion-grid>
+
 </ion-content>
