@@ -1,8 +1,10 @@
 import { Component,inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MyDataService } from '../data.service';
 import { CardDetailsPage } from '../card-details/card-details.page';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
+import { LeveldetailPage } from '../leveldetail/leveldetail.page';
+import { Capability, Level1sChild } from '../Capability';
 
 
 interface CardData {
@@ -25,69 +27,6 @@ interface ElementData {
 ///
 
 
-interface IrisData {
-  config: {};
-  Capabilities: Capability[];
- }
-
- interface Capability {
-    Type: string;
-    Name: string;
-    InternalId: string;
-    CreatedBy: string;
-    CreatedTimestamp: string;
-    ModifiedBy: string;
-    ModifiedTimestamp: string;
-    ProtectfromDelete: boolean;
-    Filtered: boolean;
-    Children: Level1sChild[]
- }
-
- interface Level1sChild {
-    Type: string;
-    Name: string;
-    Description: string;
-    InternalId: string;
-    CreatedBy: string;
-    CreatedTimestamp: string;
-    ModifiedBy: string;
-    ModifiedTimestamp: string;
-    ProtectfromDelete: boolean;
-    Filtered: boolean;
-    Attributes: Attrib[],
-    Children: Level2sChild[]
-    Comments: Comment[]
- }
-
- interface Attrib {
-  AttributeName: string;
-  AttributeValue: string;
-
- }
-
- interface Comment {
-  CommentingUser: string;
-  Comment: string;
-  CommentDate: string;
-  CommentArchived: boolean
- }
-
- interface Level2sChild {
-  Type: string;
-  Name: string;
-  Description: string;
-  InternalId: string;
-  CreatedBy: string;
-  CreatedTimestamp: string;
-  ModifiedBy: string;
-  ModifiedTimestamp: string;
-  Filtered: boolean;
-  CapEnablesStageRelationship: any[],
-  Attributes: Attrib[],
-  Children: Level2sChild[]
-  Comments: Comment[]
-
- }
 ///
 
 @Component({
@@ -104,7 +43,7 @@ export class ShippingPage implements OnInit {
   filteredData: Capability[] = [];
   searchTerm: string = '';
   message = 'This modal example uses the modalController to present and dismiss modals.';
-  constructor(private dataService: MyDataService,private modalCtrl: ModalController) {}
+  constructor(private dataService: MyDataService,private modalCtrl: ModalController,private route: Router) {}
 
   ngOnInit() {
     this.shipping = this.activatedRoute.snapshot.paramMap.get('id') as string;
@@ -148,6 +87,19 @@ export class ShippingPage implements OnInit {
     ;
   }
 
+  navigateToPage(item: Capability ) {
+
+  
+    this.route.navigate(['/leveldetail'], {
+      state: { data: item }
+    });
+  }
+
+  navigateToPage2(item: Level1sChild) {
+    this.route.navigate(['/leveldetail'], {
+      state: { data: item }
+    });
+  }
   async openModal() {
     const modal = await this.modalCtrl.create({
       component: CardDetailsPage,

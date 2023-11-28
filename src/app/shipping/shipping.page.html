@@ -27,7 +27,7 @@
       
       <ion-row >
         <ion-col size="4" *ngFor="let item of filteredData">
-          <ion-card  class="ion-text-center" color="primary" (click)="openModal()">
+          <ion-card  class="ion-text-center" color="primary" (click)="navigateToPage(item)">
             <ion-card-header>
               <!-- <fa-icon [icon]="['fas', 'scale-balanced']" size="2x"></fa-icon> -->
               <ion-card-title>{{ item.Name }}</ion-card-title>
@@ -36,7 +36,8 @@
 
           <ion-grid>
             <ion-row *ngFor="let child of item?.Children">
-              <ion-card  class="ion-text-center" style="width: 100% !important;" *ngIf= "child.Attributes[0].AttributeValue === 'Published' " color="warning">
+              <ion-card  class="ion-text-center" style="width: 100% !important;"
+                 (click)="navigateToPage2(child)"  color="warning">
                 <ion-card-header>
                   <ion-card-title>{{ child.Name }}</ion-card-title>
 

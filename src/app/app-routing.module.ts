@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'card-details',
     loadChildren: () => import('./card-details/card-details.module').then( m => m.CardDetailsPageModule)
+  },
+  {
+    path: 'leveldetail',
+    loadChildren: () => import('./leveldetail/leveldetail.module').then( m => m.LeveldetailPageModule)
   }
 ];
 
