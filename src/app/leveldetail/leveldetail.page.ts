@@ -11,6 +11,7 @@ export class LeveldetailPage implements OnInit {
 
 
   public name!: string;
+  public item!: Capability;
   public children: Level1sChild[] = [];
   constructor(private router: Router) { }
 
@@ -19,6 +20,7 @@ export class LeveldetailPage implements OnInit {
     const item = navigation?.extras.state?.['data'];
     console.log("Accepted item", item);
     this.name = item.Name;
+    this.item = item;
     this.children = item.Children;
     
   }
