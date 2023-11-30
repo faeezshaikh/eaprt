@@ -10,6 +10,7 @@ export class ModalDetailsPage implements OnInit {
 
   constructor(private modalCtrl: ModalController) { }
   @Input() value: any;
+  @Input() type: string | undefined;
 
   ngOnInit() {
     console.log("Received:",this.value);

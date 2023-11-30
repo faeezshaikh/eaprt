@@ -1,17 +1,10 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="{{ type === 'Tier' ? 'secondary' : 'warning'}}">
     <ion-buttons slot="start">
-   
-
-        <ion-back-button defaultHref="/"></ion-back-button>
-   
-
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-
-    <ion-title style="color:purple"  slot="start">{{ type === 'Tier' ? 'L2' : 'L3'}} - {{ name }}</ion-title>
-
+    <ion-title style="color:purple" slot="start">{{ type === 'Tier' ? 'L2' : 'L3'}} - {{ name }}</ion-title>
   </ion-toolbar>
-  
 </ion-header>
 
 
@@ -21,60 +14,63 @@
       <ion-card-title>{{parentName}} <span *ngIf="parentName"> --> </span> {{item.Name}}</ion-card-title>
       <ion-card-subtitle>Type: {{item.Type}}</ion-card-subtitle>
     </ion-card-header>
-  
+
     <ion-card-content>
       <ion-row>
         <ion-col size="6">
-          <ion-label> Internal Id: </ion-label>{{item.InternalId}} 
+          <ion-label> Internal Id: </ion-label>{{item.InternalId}}
         </ion-col>
-        <ion-col size="6"><ion-badge color="warning">{{item.ProtectfromDelete ? 'Protected' : 'Deletable'}}</ion-badge></ion-col>
+        <ion-col size="6"><ion-badge color="warning">{{item.ProtectfromDelete ? 'Protected' :
+            'Deletable'}}</ion-badge></ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="6">Created By: {{item.CreatedBy}} <br/></ion-col>
+        <ion-col size="6">Created By: {{item.CreatedBy}} <br /></ion-col>
         <ion-col size="6">Modified By: {{item.ModifiedBy}}</ion-col>
       </ion-row>
-     
-      
-      
+
+
+
     </ion-card-content>
   </ion-card>
 
-<ion-grid>
-  <ion-row>
-    <ion-card *ngFor="let child of children " tooltip="I'm a tooltip below a button"  >
-      <ion-card-header color="{{ type === 'Tier' ? 'warning' : 'secondary'}}">
-        <ion-card-title style="color:white">{{child.Name}}</ion-card-title>
+  <ion-grid>
+    <ion-row>
+      <ion-card *ngFor="let child of children " tooltip="I'm a tooltip below a button">
+        <ion-card-header color="{{ type === 'Tier' ? 'warning' : 'secondary'}}">
+          <ion-card-title style="color:white">{{child.Name}}</ion-card-title>
 
-  
-     
-<div class="tooltip">
-  <ion-card-subtitle  style="color:white">  {{ (child.Description.length>60)? (child.Description | slice:0:60)+'...':(child.Description) }}</ion-card-subtitle>
-    
-  <span class="tooltiptext">{{child.Description}}</span>
-</div>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list>
-          <ion-item *ngFor="let subchild of child.Children " (click)="showDetailsModal(subchild)">
-     
-        
-            <ion-icon color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" name="logo-ionic"></ion-icon> &nbsp;
-            <ion-label class="pointer">{{subchild.Name}}</ion-label> &nbsp;&nbsp;
 
-            <!-- <ion-badge color="success">{{subchild.Attributes[0].AttributeValue}}</ion-badge> -->
 
-            <ion-badge *ngIf="subchild?.Attributes?.[0]?.AttributeValue"  [color]="getColor(subchild.Attributes[0].AttributeValue)">
-              {{ subchild.Attributes[0].AttributeValue }}
-            </ion-badge>
-          
-          </ion-item>
-    
-         
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
+          <div class="tooltip">
+            <ion-card-subtitle style="color:white"> {{ (child.Description.length>60)? (child.Description |
+              slice:0:60)+'...':(child.Description) }}</ion-card-subtitle>
 
-  </ion-row>
-</ion-grid>
+            <span class="tooltiptext">{{child.Description}}</span>
+          </div>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item *ngFor="let subchild of child.Children " (click)="showDetailsModal(subchild)">
+
+
+              <ion-icon color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" name="logo-ionic"></ion-icon> &nbsp;
+              <ion-label class="pointer">{{subchild.Name}}</ion-label> &nbsp;&nbsp;
+
+              <!-- <ion-badge color="success">{{subchild.Attributes[0].AttributeValue}}</ion-badge> -->
+
+              <ion-badge *ngIf="subchild?.Attributes?.[0]?.AttributeValue"
+                [color]="getColor(subchild.Attributes[0].AttributeValue)">
+                {{ subchild.Attributes[0].AttributeValue }}
+              </ion-badge>
+
+            </ion-item>
+
+
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

@@ -1,29 +1,38 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
-    </ion-buttons>
-    <ion-title>Welcome</ion-title>
+
+    <!-- <ion-toolbar color="{{ type === 'Tier' ? 'secondary' : 'warning'}}"> -->
+      <ion-toolbar color="tertiary">
+  
+    <ion-title>Details</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+      <ion-button (click)="confirm()" [strong]="true">Close</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="ion-padding">
+
+
+
+
+
+
+
+
+
+
+  
   <ion-card>
-    <ion-card-header>
+    <ion-card-header color="medium">
       <ion-card-title>{{value.Name}}</ion-card-title>
       <ion-card-subtitle>Type: {{value.Type}}</ion-card-subtitle>
     </ion-card-header>
-  
+  <ion-row>&nbsp;</ion-row>
     <ion-card-content>
+      <strong>Description:</strong>
       {{value.Description}}
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
- 
 
-
+      <ion-row>&nbsp;</ion-row>
 <table>
   <tr>
     <th>Attribute</th>
@@ -55,12 +64,25 @@
     <td>{{value.ModifiedTimestamp}}</td>
 
   </tr>
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>Giovanni Rovelli</td>
+  <tr *ngIf="value.Comments && value.Comments.length>0">
+    <td>Comments</td>
+    <td>
+      <ion-row *ngFor="let comment of value.Comments">
+          <ion-row><strong>Author: </strong> {{comment.CommentingUser}}</ion-row>
+          <ion-row><strong>Comment: </strong> {{comment.Comment}}</ion-row>
+          <ion-row>&nbsp;</ion-row>
+      </ion-row>
+   
+    </td>
 
   </tr>
 </table>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+ 
+
 
   </ion-card>
 </ion-content>

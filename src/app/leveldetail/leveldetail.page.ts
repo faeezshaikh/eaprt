@@ -50,7 +50,7 @@ export class LeveldetailPage implements OnInit {
   async showDetailsModal(item: Level2sChild) {
     const modal = await this.modalCtrl.create({
       component: ModalDetailsPage,
-      componentProps: { value: item }
+      componentProps: { value: item, type:this.type }
     });
     modal.present();
 
