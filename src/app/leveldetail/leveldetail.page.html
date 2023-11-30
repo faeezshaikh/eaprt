@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title style="color:purple" slot="start">{{ type === 'Tier' ? 'L2' : 'L3'}} - {{ name }}</ion-title>
+    <ion-title style="color:purple;"  style="text-align: center">{{ type === 'Tier' ? 'L2' : 'L3'}} - {{ name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,19 +11,21 @@
 <ion-content [fullscreen]="true">
   <ion-card color="medium">
     <ion-card-header>
-      <ion-card-title>{{parentName}} <span *ngIf="parentName"> --> </span> {{item.Name}}</ion-card-title>
-      <ion-card-subtitle>Type: {{item.Type}}</ion-card-subtitle>
+
+      <ion-card-title  style="text-align: center">{{parentName}} <span *ngIf="parentName"> ==>  </span> {{item.Name}}</ion-card-title>
+      <ion-card-subtitle  style="text-align: center">Type: {{item.Type}}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
-      <ion-row>
+      <p>&nbsp;</p>
+      <ion-row  style="text-align: center">
         <ion-col size="6">
           <ion-label> Internal Id: </ion-label>{{item.InternalId}}
         </ion-col>
         <ion-col size="6"><ion-badge color="warning">{{item.ProtectfromDelete ? 'Protected' :
             'Deletable'}}</ion-badge></ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row  style="text-align: center">
         <ion-col size="6">Created By: {{item.CreatedBy}} <br /></ion-col>
         <ion-col size="6">Modified By: {{item.ModifiedBy}}</ion-col>
       </ion-row>
