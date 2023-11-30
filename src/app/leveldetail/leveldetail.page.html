@@ -55,11 +55,11 @@
       </ion-card-header>
       <ion-card-content>
         <ion-list>
-          <ion-item *ngFor="let subchild of child.Children ">
+          <ion-item *ngFor="let subchild of child.Children " (click)="showDetailsModal(subchild)">
      
         
             <ion-icon color="{{ type === 'Tier' ? 'warning' : 'secondary'}}" name="logo-ionic"></ion-icon> &nbsp;
-            <ion-label >{{subchild.Name}}</ion-label> &nbsp;&nbsp;
+            <ion-label class="pointer">{{subchild.Name}}</ion-label> &nbsp;&nbsp;
 
             <!-- <ion-badge color="success">{{subchild.Attributes[0].AttributeValue}}</ion-badge> -->
 

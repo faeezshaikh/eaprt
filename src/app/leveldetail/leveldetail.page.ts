@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Capability, Level1sChild } from '../Capability';
+import { Capability, Level1sChild, Level2sChild } from '../Capability';
+import { ModalController } from '@ionic/angular';
+import { ModalDetailsPage } from '../modal-details/modal-details.page';
 
 @Component({
   selector: 'app-leveldetail',
@@ -15,7 +17,7 @@ export class LeveldetailPage implements OnInit {
   public item!: Capability;
   public parentName!: string;
   public children: Level1sChild[] = [];
-  constructor(private router: Router) { }
+  constructor(private router: Router,private modalCtrl: ModalController) { }
 
   ngOnInit() {
     const navigation = this.router.getCurrentNavigation();
@@ -42,6 +44,21 @@ export class LeveldetailPage implements OnInit {
       default:
         return 'medium'; // Default color if none of the conditions are met
     }
+  }
+
+ 
+  async showDetailsModal(item: Level2sChild) {
+    const modal = await this.modalCtrl.create({
+      component: ModalDetailsPage,
+      componentProps: { value: item }
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    // if (role === 'confirm') {
+    //   this.message = `Hello, ${data}!`;
+    // }
   }
   
 }

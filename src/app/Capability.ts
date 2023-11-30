@@ -46,7 +46,7 @@ interface IrisData {
     CommentArchived: boolean
    }
   
-   interface Level2sChild {
+   export interface Level2sChild {
     Type: string;
     Name: string;
     Description: string;

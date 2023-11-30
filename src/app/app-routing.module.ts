@@ -31,6 +31,10 @@ const routes: Routes = [
   {
     path: 'leveldetail',
     loadChildren: () => import('./leveldetail/leveldetail.module').then( m => m.LeveldetailPageModule)
+  },
+  {
+    path: 'modal-details',
+    loadChildren: () => import('./modal-details/modal-details.module').then( m => m.ModalDetailsPageModule)
   }
 ];
 
